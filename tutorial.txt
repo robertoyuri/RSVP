@@ -1,0 +1,22 @@
+Instalar Python
+Instalar Pycharm
+
+Criar venv
+pyhton -m venv venv
+
+Entrar venv
+source venv/bin/activate
+venv/Scripts/activate
+
+Instalar Django
+pip install django
+
+Iniciar o Projeto
+django-admin startproject *nome_do_projeto_de_voces*
+
+Entrar na pasta do projeto
+cd *nome_do_projeto_de_voces*
+
+Executar o projeto
+python manage.py runserver
+
