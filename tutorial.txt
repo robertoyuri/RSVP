@@ -20,3 +20,17 @@ cd *nome_do_projeto_de_voces*
 Executar o projeto
 python manage.py runserver
 
+Iniciar aplicação
+python manage.py startapp *nome_do_modulo_de_voces*
+
+Criar pasta templates na raiz do projeto
+Configurar a pasta templates no arquivo settings.py
+
+Fazer migração do modelo de dados
+python manage.py makemigrations
+
+Excutar a migração
+python manage.py migrate
+
+criar um super usuario
+python manage.py createsuperuser
