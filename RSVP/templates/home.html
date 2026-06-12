@@ -1,7 +1,9 @@
+{% load static %}
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}"></link>
 </head>
 <body>
 <h1>Seja bem vindo convidado</h1>
@@ -15,7 +17,7 @@
 <a href="https://www.google.com">Clique aqui</a>
 <br>
 <a href="convidados">
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZo_LFVaLhQMmdfYUiBUIGP6LfkmCl2ZMQhQ&s"
+<img src="{% static '/img/edit.png'%}"
 height="50px" width="50px"/>
 </a>
 <ul>
