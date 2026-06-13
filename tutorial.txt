@@ -50,3 +50,4 @@ python manage.py collectstatic
 Documentação:
 CSS: https://www.w3schools.com/css/
 HTML: https://www.w3schools.com/html/default.asp
+Bootstrap: https://getbootstrap.com/docs/5.3/layout/grid/
