@@ -6,3 +6,6 @@ def home(request):
 
 def cadastro(request):
     return render(request, 'convidados/cadastro.html')
+
+def listar(request):
+    return render(request, 'convidados/listar.html',{'convidados':range(50)})

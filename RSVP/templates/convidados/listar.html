@@ -1,0 +1,45 @@
+{% extends 'convidados/menu.html' %}
+{% load static %}
+{% block title %}Lista de Convidados{% endblock %}
+{% block body %}
+<br>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Nome Completo</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Complemento</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">UF</th>
+            <th scope="col">CEP</th>
+            <th scope="col">Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in convidados %}
+        <tr>
+            <th scope="row">{{i}}</th>
+            <td><img src="{% static 'img/perfil.png' %}" height="40px"></td>
+            <td>Roberto Franco</td>
+            <td>roberto@gmail.com</td>
+            <td>(91) 98124-4200</td>
+            <td>Rua da china, 123</td>
+            <td>Ed. Fácil apto 33</td>
+            <td>Porto de Moz</td>
+            <td>PA</td>
+            <td>68390-231</td>
+            <td>
+                <a href="#"><img src="{% static 'img/editar.png' %}" height="30px"></a>
+                <a href="#"><img src="{% static 'img/excluir.png' %}" height="30px"></a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
