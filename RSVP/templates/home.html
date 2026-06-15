@@ -8,6 +8,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 <body>
+<script>
+    //alert('Seja bem vindo!');
+</script>
 <style>
     h2{
         color: blue;
@@ -36,8 +39,8 @@
         </div>
     </div>
 </div>
-<h1 style="color: green;">Seja bem vindo convidado</h1>
-<h1>Seja bem vindo convidado</h1>
+<h1 onclick="ola();" style="color: green;">Seja bem vindo convidado</h1>
+<h1 id="mensagem">Seja bem vindo convidado</h1>
 <h2>Seja bem vindo convidado</h2>
 <a href="#"><h3 class="cor">Seja bem vindo convidado</h3></a>
 <a href="#"><h4>Seja bem vindo convidado</h4></a>
@@ -92,5 +95,6 @@ height="50px" width="50px"/>
         <option>Gana</option>
     </select>
 </form>
+<script type="application/javascript" src="{% static '/js/script.js' %}"></script>
 </body>
 </html>
