@@ -4,6 +4,7 @@
 {% block body %}
 <br>
 <div class="container">
+    <h1>Cadastro de Convidado</h1>
     <form class="row g-3">
         <div class="col-12">
             <label for="nome" class="form-label">Nome Completo</label>
@@ -50,6 +51,16 @@
         <div class="col-12">
             <label for="foto" class="form-label">Foto</label>
             <input class="form-control form-control-lg" id="foto" type="file">
+        </div>
+        <div class="col-md-12">
+            <label for="evento" class="form-label">Evento</label>
+            <select id="evento" class="form-select">
+                <option selected>Formatura BSI Porto de Moz</option>
+                <option>Casamento 1</option>
+                <option>Casamento 2</option>
+                <option>Casamento 3</option>
+
+            </select>
         </div>
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Cadastrar</button>

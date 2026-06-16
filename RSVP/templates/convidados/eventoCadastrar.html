@@ -1,0 +1,31 @@
+{% extends 'convidados/menu.html' %}
+{% load static %}
+{% block title %}Cadastro de Convidados{% endblock %}
+{% block body %}
+<br>
+<div class="container">
+    <h1>Cadastro de Evento</h1>
+    <form class="row g-3" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-12">
+            <label for="nome" class="form-label">Nome do Evento</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="">
+        </div>
+        <div class="col-md-6">
+            <label for="data" class="form-label">Data</label>
+            <input type="Date" class="form-control" id="data" name="data">
+        </div>
+        <div class="col-md-6">
+            <label for="hora" class="form-label">Hora</label>
+            <input type="text" class="form-control" id="hora" name="hora">
+        </div>
+        <div class="col-12">
+            <label for="local" class="form-label">Local</label>
+            <input type="text" class="form-control" id="local" name="local" placeholder="Rua dos Capixabas, 229">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
