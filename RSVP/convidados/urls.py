@@ -5,8 +5,8 @@ app_name = 'convidados'
 
 urlpatterns = [
     path('', home, name='home'),
-    path('/cadastro/', cadastro, name='cadastro'),
-    path('/listar/', listar, name='listar'),
-    path('/eventocadastrar/', eventocadastrar, name='eventocadastrar'),
+    path('cadastro/', cadastro, name='cadastro'),
+    path('listar/', listar, name='listar'),
+    path('eventocadastrar/', eventocadastrar, name='eventocadastrar'),
     path('eventolistar/', eventolistar, name='eventolistar'),
 ]

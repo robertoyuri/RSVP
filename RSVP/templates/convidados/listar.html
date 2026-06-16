@@ -17,22 +17,31 @@
             <th scope="col">Cidade</th>
             <th scope="col">UF</th>
             <th scope="col">CEP</th>
+            <th scope="col">Eventos</th>
             <th scope="col">Ações</th>
         </tr>
         </thead>
         <tbody>
-        {% for i in convidados %}
+        {% for c in convidados %}
         <tr>
-            <th scope="row">{{i}}</th>
-            <td><img src="{% static 'img/perfil.png' %}" height="40px"></td>
-            <td>Roberto Franco</td>
-            <td>roberto@gmail.com</td>
-            <td>(91) 98124-4200</td>
-            <td>Rua da china, 123</td>
-            <td>Ed. Fácil apto 33</td>
-            <td>Porto de Moz</td>
-            <td>PA</td>
-            <td>68390-231</td>
+            <th scope="row">{{c.id}}</th>
+            <td><img src="{{c.foto.url}}" height="40px"></td>
+            <td>{{c.nome}}</td>
+            <td>{{c.email}}</td>
+            <td>{{c.telefone}}</td>
+            <td>{{c.endereco}}</td>
+            <td>{{c.complemento}}</td>
+            <td>{{c.cidade}}</td>
+            <td>{{c.UF}}</td>
+            <td>{{c.cep}}</td>
+            <td>
+                {% for e in c.eventos.all %}
+                {{e.nome}}<br>
+                {% empty %}
+                Nenhum evento
+                {% endfor %}
+            </br>
+            </td>
             <td>
                 <a href="#"><img src="{% static 'img/editar.png' %}" height="30px"></a>
                 <a href="#"><img src="{% static 'img/excluir.png' %}" height="30px"></a>
