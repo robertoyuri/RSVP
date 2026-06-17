@@ -1,5 +1,6 @@
 from django import forms
-from .models import Convidados
+from .models import Convidados, Eventos
+
 
 class ConvidadosForm(forms.ModelForm):
     class Meta:
@@ -30,4 +31,15 @@ class ConvidadosForm(forms.ModelForm):
             'UF': 'UF',
             'cep': 'CEP',
             'evento': 'Evento',
+        }
+
+class EventosForm(forms.ModelForm):
+    class Meta:
+        model = Eventos
+        fields = '__all__'
+        widgets = {
+            'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome do Evento'}),
+            'data': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Data do Evento'}),
+            'hora': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'Hora do Evento'}),
+            'local': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Local do Evento'}),
         }

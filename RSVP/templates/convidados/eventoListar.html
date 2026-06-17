@@ -24,12 +24,45 @@
             <td>{{evento.hora}}</td>
             <td>{{evento.local}}</td>
             <td>
-                <a href="{{evento.id}}"><img src="{% static 'img/editar.png' %}" height="30px"></a>
-                <a href="{{evento.id}}"><img src="{% static 'img/excluir.png' %}" height="30px"></a>
+                <a href="{% url 'convidados:eventoeditar' evento.id %}"><img src="{% static 'img/editar.png' %}" height="30px"></a>
+                <img src="{% static 'img/excluir.png' %}" height="30px" style="cursor:pointer" class="btnExcluir" data-id="{{evento.id}}" data-nome="{{evento.nome}}" data-bs-toggle="modal" data-bs-target="#modalExcluir"></img>
             </td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
 </div>
+<!-- Modal Excluir -->
+<div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="ModalExcluirLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form method="POST" id="formExcluir">
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h4 class="modal-title">Excluir Evento</h4>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalExcluirBody">
+                    <p>Deseja excluir este evento?</p>
+                    <strong id="nomeEvento"></strong>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    document.querySelectorAll(".btnExcluir").forEach(botao => {
+        botao.addEventListener('click', () => {
+            const id = botao.dataset.id;
+            const nome = botao.dataset.nome;
+
+            document.getElementById('nomeEvento').innerText = nome;
+            document.getElementById('formExcluir').action="{% url 'convidados:eventoexcluir' 0 %}".replace('0', id);
+        });
+    });
+</script>
 {% endblock %}

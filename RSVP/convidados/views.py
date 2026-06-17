@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .forms import ConvidadosForm
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import ConvidadosForm, EventosForm
 
 from .models import Eventos, Convidados
 
@@ -21,16 +21,58 @@ def convidadoslistar(request):
     convidados = Convidados.objects.all()
     return render(request, 'convidados/convidadoslistar.html',{'convidados':convidados})
 
-def eventocadastrar(request):
+def convidadoseditar(request, id):
+    convidado = None
+    if id:
+        convidado = get_object_or_404(Convidados, pk=id)
+
     if request.method == 'POST':
-        nome = request.POST['nome']
-        data = request.POST['data']
-        hora = request.POST['hora']
-        local = request.POST['local']
-        evento = Eventos(nome=nome, data=data, hora=hora, local=local).save()
-        return redirect('convidados:convidadoslistar')
-    return render(request, 'convidados/eventocadastrar.html')
+        form = ConvidadosForm(request.POST, request.FILES, instance=convidado)
+
+        if form.is_valid():
+            form.save()
+            return redirect('convidados:convidadoslistar')
+    else:
+        form = ConvidadosForm(instance=convidado)
+    return render(request, 'convidados/convidadoscadastrar.html', {'form':form})
+
+def convidadosexcluir(request, id):
+    convidado = get_object_or_404(Convidados, pk=id)
+    if request.method == 'POST':
+        convidado.delete()
+    return redirect('convidados:convidadoslistar')
+
+def eventocadastrar(request):
+    form = EventosForm(request.POST, request.FILES)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('convidados:eventolistar')
+        else:
+            form = EventosForm()
+    return render(request, 'convidados/eventocadastrar.html', {'form':form})
 
 def eventolistar(request):
     eventos = Eventos.objects.all()
     return render(request, 'convidados/eventolistar.html',{'eventos':eventos})
+
+def eventoeditar(request, id):
+    evento = None
+    if id:
+        evento = get_object_or_404(Eventos, pk=id)
+
+    if request.method == 'POST':
+        form = EventosForm(request.POST, request.FILES, instance=evento)
+
+        if form.is_valid():
+            form.save()
+            return redirect('convidados:eventolistar')
+    else:
+        form = EventosForm(instance=evento)
+    return render(request, 'convidados/eventoCadastrar.html', {'form':form})
+
+def eventoexcluir(request, id):
+    evento = get_object_or_404(Eventos, pk=id)
+    if request.method == 'POST':
+        evento.delete()
+    return redirect('convidados:eventolistar')
